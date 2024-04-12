@@ -1,0 +1,106 @@
+let parentDiv = document.querySelector(".menu");
+
+let current = 0;
+
+let addedDivs = new Set(); 
+
+let totalArray = [];
+
+function getDiv(){
+ 
+const getDivs = Array.from(document.querySelectorAll('.menu div'));
+
+getDivs.forEach((div) => {
+    const selectDiv = div.querySelectorAll("button")[current];
+    console.log(div);
+        
+  if(selectDiv){
+    selectDiv.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        if(!addedDivs.has(div)){
+            let modal = document.querySelector('.modal-container');
+
+            const createModalDiv = document.createElement('div');
+            const buttonMin = document.createElement('button');
+            const buttonAdd = document.createElement('button');
+            let add = document.createElement('p');
+           
+
+            buttonAdd.classList.add('add');
+            buttonMin.classList.add('minus');
+        
+            createModalDiv.classList.add('info-menu');
+            buttonMin.innerHTML = '-'
+            buttonAdd.innerHTML = '+'
+   
+            
+          
+            const cloneImg = div.firstElementChild.cloneNode(true);
+            const cloneHeader = div.children[1].cloneNode(true);
+            const clonePrice = div.children[2].cloneNode(true);
+
+          
+
+    
+            modal.append(createModalDiv);
+            // createModalDiv.innerHTML = div.innerHTML;
+            createModalDiv.appendChild(cloneImg);
+            createModalDiv.appendChild(cloneHeader);
+            createModalDiv.appendChild(clonePrice);
+            createModalDiv.appendChild(buttonMin)
+            createModalDiv.appendChild(buttonAdd);
+            createModalDiv.appendChild(add)
+            addedDivs.add(div);
+            
+            let sum = 0;
+            let combineTotal = 0;
+            const total = document.querySelector(".total");
+            buttonAdd.addEventListener("click", function(){
+                sum++;
+                buttonMin.disabled = false;
+                console.log(sum)
+                let number = parseFloat(clonePrice.textContent);
+                if(!isNaN(number)){
+                    totalArray.push(number);
+                    combineTotal = totalArray.reduce((acc, curr) => acc + curr,0);
+                    total.innerHTML = `Total : ${combineTotal}`;
+                    add.innerHTML = `Quantiy: ${sum}`;
+                
+                }
+            
+              
+            });
+            buttonMin.addEventListener("click", function(){
+                if(sum > 0){ // Check to prevent negative quantity
+                    sum--;
+                    let number = parseFloat(clonePrice.textContent);
+                    if(!isNaN(number)){
+                        combineTotal -= totalArray[totalArray.length - 1];
+                        totalArray.pop();
+                        total.innerHTML = `Total : $${combineTotal}`;
+                        add.innerHTML = `Quantity: ${sum}`; // Corrected typo here
+                    }
+                    
+                } else {
+                    // If sum is 0, ensure the total is reset to 0 as well
+                    combineTotal = 0;
+                    total.innerHTML = `Total : $${combineTotal}`;
+                    add.innerHTML = `Quantity: ${sum}`;
+                    buttonMin.disabled = true;
+                }
+
+                
+            });
+          
+        }
+    
+    });
+  }
+ });
+
+
+}
+
+getDiv();
