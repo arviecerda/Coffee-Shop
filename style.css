@@ -1161,6 +1161,9 @@ form button {
     .links {
         transition: none;
     }
+    img{
+         transition: none;
+    }
 }
 /* intersecting animation scroll animation */
 .info-menu:nth-child(2) {
