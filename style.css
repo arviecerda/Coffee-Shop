@@ -8,6 +8,7 @@
 }
 
 
+
 main {
     width: 100%;
     border: 1px solid red;
@@ -52,6 +53,7 @@ header {
     padding: 15px 40px;
     border-radius: 50px;
     background: #fff;
+    margin-bottom: -15px;
 }
 
 
@@ -166,7 +168,7 @@ li {
     }
 }
 
-.container {
+.container-main {
     width: 100%;
     height: 100vh;
     margin-left: auto;
@@ -180,15 +182,16 @@ li {
     gap: 20px;
 }
 
-.container .greet {
+.container-main .greet {
     width: 50%;
     text-align: start;
     padding: 30px;
 }
 
-.container h1 {
+.container-main h1 {
     color: #fff;
     font-size: clamp(2.4rem, 2.1273rem + 1.1636vw, 5rem);
+    font-weight: bold;
 }
 
 .greet p {
@@ -266,6 +269,7 @@ section {
  }
  .quality-info h3{
     font-size: clamp(0.7rem, 0.6rem + 0.5333vw, 1rem);
+    font-weight: bold;
  }
 
  .quality-info p{
@@ -309,6 +313,7 @@ section {
 .tumbler-container h1 {
     color: #fff;
     font-size: clamp(1.4rem, 0.8333rem + 3.0222vw, 3.1rem);
+    font-weight: bold;
 }
 
 .tumbler-container p {
@@ -321,6 +326,7 @@ section .explore,
     text-align: center;
     padding: 80px 20px 40px 20px;
     font-size: 3.50rem;
+    font-weight: bold;
     color: #fff;
 }
 
@@ -350,7 +356,8 @@ section .explore,
 }
 
 .info-menu .title-item {
-    font-size: 2rem;
+    font-size: clamp(0.08125rem, -0.5583rem + 3.4111vw, 2rem);
+    font-weight: bold;
 }
 
 .info-menu .price-item {
@@ -491,10 +498,13 @@ article a {
     transition: ease-in-out 0.3s;
     text-align: center;
 }
+.info-special h1{
+    font-size: clamp(0.08125rem, -0.5583rem + 3.4111vw, 2rem);
+    font-weight: bold;
+}
 
 
 .info-special img,
-h1,
 p {
     margin-bottom: 18px;
 }
@@ -510,10 +520,7 @@ p {
 .modal {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('./background-modal.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #fff;
     z-index: 9999;
     position: fixed;
     overflow: auto;
@@ -535,6 +542,47 @@ p {
     align-items: center;
     gap: 3rem;
 }
+/* for bootsrap items */
+.col{
+    background: violet;
+    padding: 10px 0px 10px 0px;
+    border: 1px solid;
+}
+#label-item,
+#label-price-quantity,
+#label-action{
+    background: none;
+    border: none;
+    text-align: start;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#label-price-quantity-items, #label-item-items, #label-action-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+#label-item-items img{
+    width: 50%;
+    height: 60px;
+}
+#label-price-quantity-items p{
+    margin-top: 18px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#label-price-quantity-items input{
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+/* end of bootsrap */
+
 
 .item-info {
     width: 15%;
@@ -563,6 +611,7 @@ p {
 
 .item-info .title-item {
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .item-info .input-quantity {
@@ -675,7 +724,6 @@ form button {
     align-items: center;
     flex-wrap: wrap;
     position: absolute;
-
 }
 
 .total .btn-purchase {
@@ -709,17 +757,17 @@ form button {
     /* background: #333;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px; */
-    color: #fff;
+    color: #333;
 
 }
 
 
 
 @media(min-width: 375px) {
-    .container {
+    .container-main {
         max-width: 375px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 100%;
         padding: 0 !important;
     }
@@ -779,10 +827,10 @@ form button {
 }
 
 @media(min-width: 475px) {
-    .container {
+    .container-main {
         max-width: 475px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 100%;
     }
     .quality{
@@ -844,10 +892,10 @@ form button {
 }
 
 @media(min-width: 640px) {
-    .container {
+    .container-main {
         max-width: 640px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 100%;
     }
     .quality{
@@ -905,10 +953,10 @@ form button {
 }
 
 @media(min-width: 768px) {
-    .container {
+    .container-main {
         max-width: 768px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 90%;
     }
     .quality{
@@ -963,10 +1011,10 @@ form button {
 }
 
 @media(min-width: 1024px) {
-    .container {
+    .container-main {
         max-width: 1024px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 80%;
     }
     .quality{
@@ -1023,10 +1071,10 @@ form button {
 }
 
 @media(min-width: 1280px) {
-    .container {
+    .container-main {
         max-width: 1280px;
     }
-    .container .greet {
+    .container-main .greet {
         width: 50%;
     }
     .quality{
@@ -1091,7 +1139,7 @@ form button {
 }
 
 @media(min-width: 1536px) {
-    .container {
+    .container-main {
         max-width: 1536px;
     }
     .menu {
@@ -1164,8 +1212,9 @@ form button {
         transition: none;
     }
     img{
-         transition: none;
+        transition: none;
     }
+
 }
 /* intersecting animation scroll animation */
 .info-menu:nth-child(2) {
