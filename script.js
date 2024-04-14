@@ -35,9 +35,9 @@ function modalopen(){
     var cartItems = document.getElementsByClassName("cart-items")[0];
     // Select the first element
     if (!cartItems || !cartItems.hasChildNodes()) {
-        cartItems.innerHTML = "YOUR CART IS EMPTY";
+        // cartItems.innerHTML = "";
         if (buttonPurchase) {
-            buttonPurchase[0].disabled = true; // Set disabled property of the button if it exists
+            buttonPurchase[0].enable = true; // Set disabled property of the button if it exists
         } // Set disabled property of the button
     } else {
         updateCartTotal(); // This line seems unnecessary and might cause issues
@@ -83,10 +83,7 @@ function purchaseClicked() {
             cartItems.removeChild(cartItems.firstChild);
         }
         updateCartTotal();
-        cartItems.innerHTML = "YOUR CART IS EMPTY";
-        buttonPurchase[0].disabled = true;
         alert("Thank you for your purchase");
-        
     }
     saveData();
 }
@@ -103,12 +100,12 @@ function quantityChanged(event){
 
 function removeCartItem(event){
        var buttonClicked = event.target;
-       buttonClicked.parentElement.remove();
+       buttonClicked.parentElement.parentElement.remove();
        var cartItems = document.getElementsByClassName("cart-items")[0];
        console.log("clicked")
        updateCartTotal();
        if(!cartItems || !cartItems.hasChildNodes()){
-            cartItems.innerHTML = "YOUR CART IS EMPTY"
+            cartItems.innerHTML = ""
        }else{
         updateCartTotal()
         buttonPurchase[0].disabled = true;
@@ -280,4 +277,5 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
 
